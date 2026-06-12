@@ -4,7 +4,6 @@
 #include <doctest/doctest.h>
 
 #include <gst/gst.h>
-#include <error_info.h>
 #include <error_hdr.h>
 
 enum class GRuntimeError{
