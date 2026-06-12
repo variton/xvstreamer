@@ -6,7 +6,6 @@ add_executable(test_err
 
 target_include_directories(test_err PUBLIC
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/err>
-  $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/topology>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/core>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/topology>
   $<INSTALL_INTERFACE:include>
