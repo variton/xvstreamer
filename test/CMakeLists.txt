@@ -1,38 +1,67 @@
-#========================== err namespace tests ========================== 
+#========================== core namespace tests ========================== 
 
-add_executable(test_err
-    test_err_hdr.cpp
+#========================== error_hdr tests ===============================
+add_executable(test_error_hdr
+    test_error_hdr.cpp
 )
 
-target_include_directories(test_err PUBLIC
+target_include_directories(test_error_hdr PUBLIC
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/err>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/core>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/topology>
   $<INSTALL_INTERFACE:include>
 )
 
-# target_link_libraries(test_err
-#   PRIVATE
-#     PkgConfig::GSTREAMER
-# )
-
-target_link_libraries(test_err PRIVATE
+target_link_libraries(test_error_hdr PRIVATE
     doctest::doctest
     PkgConfig::GSTREAMER
 )
 
-target_link_options(test_err PRIVATE
+target_link_options(test_error_hdr PRIVATE
                     $<$<CONFIG:Debug>:--coverage>)
 
-target_compile_options(test_err PRIVATE 
+target_compile_options(test_error_hdr PRIVATE 
                        -Wall -Wextra -pedantic
                        $<$<CONFIG:Debug>:--coverage -Og -g>
                        $<$<CONFIG:Release>:-O3 -DNDEBUG>)
 
-add_test(NAME test_err COMMAND $<TARGET_FILE:test_err>)
+add_test(NAME test_error_hdr COMMAND $<TARGET_FILE:test_error_hdr>)
 
-set_tests_properties(test_err PROPERTIES
+set_tests_properties(test_error_hdr PROPERTIES
   ENVIRONMENT "RC=${TRC}"
 )
 
+#========================== gst_memory tests ===============================
+add_executable(test_gst_memory
+    test_gst_memory.cpp
+)
 
+target_include_directories(test_gst_memory PUBLIC
+  $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/err>
+  $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/core>
+  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/core>
+  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/utils>
+  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/topology>
+  $<INSTALL_INTERFACE:include>
+)
+
+target_link_libraries(test_gst_memory PRIVATE
+    utils
+    doctest::doctest
+    PkgConfig::GSTREAMER
+)
+
+target_link_options(test_gst_memory PRIVATE
+                    $<$<CONFIG:Debug>:--coverage>)
+
+target_compile_options(test_gst_memory PRIVATE 
+                       -Wall -Wextra -pedantic
+                       $<$<CONFIG:Debug>:--coverage -Og -g>
+                       $<$<CONFIG:Release>:-O3 -DNDEBUG>)
+
+add_test(NAME test_gst_memory COMMAND $<TARGET_FILE:test_gst_memory>)
+
+set_tests_properties(test_gst_memory PROPERTIES
+  ENVIRONMENT 
+    "RC=${TRC}"
+)
