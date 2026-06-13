@@ -2,7 +2,6 @@
 #ifndef ERROR_HDR_H
 #define ERROR_HDR_H
 
-#include <gst/gst.h>
 #include <error_info.h>
 #include <corety.h>
 #include <string>
