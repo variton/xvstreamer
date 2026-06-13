@@ -9,6 +9,20 @@ set(FETCHCONTENT_BASE_DIR
 
 #tcxx-23 ========================================================
 
+set(TCXX_23_SOURCE_DIR "${FETCHCONTENT_BASE_DIR}/tcxx-23-src")
+
+if(EXISTS "${TCXX_23_SOURCE_DIR}/CMakeLists.txt")
+    message(STATUS "Using cached tcxx_23: ${TCXX_23_SOURCE_DIR}")
+
+    set(FETCHCONTENT_SOURCE_DIR_TCXX_23
+        "${TCXX_23_SOURCE_DIR}"
+        CACHE PATH "Cached tcxx-23 source"
+        FORCE
+    )
+else()
+    message(STATUS "Fetching tcxx-23")
+endif()
+
 FetchContent_Declare(
     tcxx-23
     GIT_REPOSITORY https://github.com/variton/tcxx-23.git
