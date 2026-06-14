@@ -15,7 +15,7 @@ StreamTraits<Video>::init(const std::string & video_file_path, int argc, char **
   (argc == 0 && argv == nullptr)? gst_init(nullptr,nullptr):gst_init(&argc, &argv);
   GError * error{nullptr};
   std::string pipeline_description = "playbin uri=file://"+video_file_path;
-  pipeline_ = core::GstPtr<GstElement>{gst_parse_launch(pipeline_description.c_str(), &error)};
+  pipeline_ = xvscore::GstPtr<GstElement>{gst_parse_launch(pipeline_description.c_str(), &error)};
   if (!pipeline_.get()){
     std::string message{error?"pipeline error occured":error->message};
     return err::unexpected(VideoError::PipelineInitFailed, message);
@@ -28,7 +28,7 @@ inline std::expected<void, VideoErrorInfo>
 StreamTraits<Video>::start() noexcept
 {
   gst_element_set_state(pipeline_.get(),GST_STATE_PLAYING);
-  bus_= core::GstPtr<GstBus>(gst_element_get_bus(pipeline_.get()));;
+  bus_= xvscore::GstPtr<GstBus>(gst_element_get_bus(pipeline_.get()));;
   if(!bus_.get()){
     std::string message{"bus has not been created"};
     return err::unexpected(VideoError::BusInitFailed, message);

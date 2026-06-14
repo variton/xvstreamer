@@ -16,11 +16,11 @@ TEST_CASE("test_gst_memory_GstElement") {
   gst_init(nullptr, nullptr); 
   GError* raw_error = nullptr;
 
-  auto pipeline = core::GstPtr<GstElement>{
+  auto pipeline = xvscore::GstPtr<GstElement>{
     gst_parse_launch(description.c_str(), &raw_error)
   };
 
-  auto error = core::GstPtr<GError>{raw_error}; 
+  auto error = xvscore::GstPtr<GError>{raw_error}; 
 
   REQUIRE(pipeline != nullptr);
   REQUIRE(error == nullptr);
