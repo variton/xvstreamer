@@ -13,11 +13,12 @@ inline std::expected<void, VideoErrorInfo>
 StreamTraits<Video>::init(const std::string & video_file_path, int argc, char ** argv) noexcept
 {
   (argc == 0 && argv == nullptr)? gst_init(nullptr,nullptr):gst_init(&argc, &argv);
-  //GError * error{nullptr};
+  GError * error{nullptr};
   std::string pipeline_description = "playbin uri=file://"+video_file_path;
-  pipeline_ = core::GstPtr<GstElement>{gst_parse_launch(pipeline_description.c_str(), nullptr)};
+  pipeline_ = core::GstPtr<GstElement>{gst_parse_launch(pipeline_description.c_str(), &error)};
   if (!pipeline_.get()){
-    return err::unexpected(VideoError::PipelineInitFailed, "pipeline error occured");
+    std::string message{error?"pipeline error occured":error->message};
+    return err::unexpected(VideoError::PipelineInitFailed, message);
   } 
   //GstMessage will be used in the future to handle async events
   return {};
