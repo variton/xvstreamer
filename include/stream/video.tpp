@@ -1,5 +1,6 @@
 
 #include <video.h>
+#include <error_hdr.h>
 
 namespace stream {
 //todo include video config Config<Video> -> should container the description for the video pipeline
@@ -17,8 +18,7 @@ StreamTraits<Video>::init(const std::string & video_file_path, int argc, char **
   std::string pipeline_description = "playbin uri=file://"+video_file_path;
   pipeline_ = xvscore::GstPtr<GstElement>{gst_parse_launch(pipeline_description.c_str(), &error)};
   if (!pipeline_.get()){
-    std::string message{error?"pipeline error occured":error->message};
-    return err::unexpected(VideoError::PipelineInitFailed, message);
+    return xvscore::unexpected(VideoError::PipelineInitFailed, error);
   } 
   //GstMessage will be used in the future to handle async events
   return {};
