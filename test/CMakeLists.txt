@@ -7,7 +7,7 @@ add_executable(test_error_hdr
 
 target_include_directories(test_error_hdr PUBLIC
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/err>
-  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/core>
+  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/xvscore>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/topology>
   $<INSTALL_INTERFACE:include>
 )
@@ -39,7 +39,7 @@ add_executable(test_gst_memory
 target_include_directories(test_gst_memory PUBLIC
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/err>
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/core>
-  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/core>
+  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/xvscore>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/utils>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/topology>
   $<INSTALL_INTERFACE:include>
@@ -78,7 +78,7 @@ target_include_directories(test_video PUBLIC
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/core>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/stream>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/utils>
-  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/core>
+  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/xvscore>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/topology>
   $<INSTALL_INTERFACE:include>
 )

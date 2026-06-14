@@ -5,7 +5,7 @@
 #include <memory>
 #include <gst/gst.h>
 
-namespace core {
+namespace xvscore {
 
 
 template <typename T>

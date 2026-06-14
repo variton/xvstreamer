@@ -37,8 +37,8 @@ struct StreamTraits<Video>:public Default<StreamTraits<Video>> {
   std::expected<void,VideoErrorInfo> release() noexcept;
 
 private:
-  core::GstPtr<GstElement> pipeline_; 
-  core::GstPtr<GstBus> bus_;
+  xvscore::GstPtr<GstElement> pipeline_; 
+  xvscore::GstPtr<GstBus> bus_;
   //core::GstPtr<GstMessage> message_; 
 };
 

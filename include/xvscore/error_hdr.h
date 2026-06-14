@@ -6,7 +6,7 @@
 #include <corety.h>
 #include <string>
 
-namespace core{
+namespace xvscore{
 
 template <typename ErrorType, topology::HasCharMessage MsgType>
 auto unexpected(ErrorType error, MsgType* msg) {
