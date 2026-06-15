@@ -5,7 +5,7 @@
 namespace stream{
 
 template <typename T>
-struct StreamTraits; 
+struct Stream; 
 
 } //stream
 

@@ -28,9 +28,9 @@ enum class VideoError
 using VideoErrorInfo = err::ErrorInfo<VideoError>;
 
 template <>
-struct StreamTraits<Video>:public Default<StreamTraits<Video>> {
+struct Stream<Video>:public Default<Stream<Video>> {
 
-  StreamTraits() noexcept;
+  Stream() noexcept;
   std::expected<void,VideoErrorInfo> init(const std::string & video_file_path, int argc=0, char ** argv=nullptr) noexcept;
   std::expected<void,VideoErrorInfo> start() noexcept;
   GstElement * get_pipeline() const noexcept;
