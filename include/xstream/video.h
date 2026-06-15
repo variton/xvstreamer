@@ -2,15 +2,14 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
-#include <streamtraits.h>
+#include <stream.h>
 #include <expected>
 
 #include <ncnm.h>
 #include <error_info.h>
 #include <gst_memory.h>
 
-namespace stream {
-
+namespace xstream {
 
 template <typename T>
 using Default = core::NCNM<T>;
@@ -42,7 +41,7 @@ private:
   //core::GstPtr<GstMessage> message_; 
 };
 
-} //stream
+} //xstream
 
 #include <video.tpp>
 
