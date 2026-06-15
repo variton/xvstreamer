@@ -2,7 +2,7 @@
 #include <video.h>
 #include <error_hdr.h>
 
-namespace stream {
+namespace xstream {
 //todo include video config Config<Video> -> should container the description for the video pipeline
 inline Stream<Video>::Stream() noexcept
   : pipeline_{nullptr}
@@ -54,4 +54,4 @@ Stream<Video>::release() noexcept
   return {};
 }
 
-}
+}// xstream

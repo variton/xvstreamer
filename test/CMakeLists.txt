@@ -31,7 +31,7 @@ set_tests_properties(test_error_hdr PROPERTIES
   ENVIRONMENT "RC=${TRC}"
 )
 
-#========================== gst_memory tests ===============================
+#========================== gst_memory tests ==============================
 add_executable(test_gst_memory
     test_gst_memory.cpp
 )
@@ -66,9 +66,9 @@ set_tests_properties(test_gst_memory PROPERTIES
     "RC=${TRC}"
 )
 
-#========================== stream namespace tests ==========================
+#========================== stream namespace tests =======================
 
-#=============================== video tests ================================
+#=============================== video tests =============================
 add_executable(test_video
     test_video.cpp
 )
@@ -76,7 +76,7 @@ add_executable(test_video
 target_include_directories(test_video PUBLIC
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/err>
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/core>
-  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/stream>
+  $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/xstream>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/utils>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/xvscore>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/topology>
