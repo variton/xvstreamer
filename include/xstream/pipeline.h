@@ -19,7 +19,12 @@ enum class PipelineState{
   STOPPED,
   READY
 };
- 
+
+//policy pattern
+template <typename Device,typename DeviceErrorInfo>
+class Pipeline<Device,DeviceErrorInfo>;
+
+
 template <typename Device,typename DeviceErrorInfo>
 class Pipeline<Device,DeviceErrorInfo>: Default<Pipeline<Device,DeviceErrorInfo>>{
   
