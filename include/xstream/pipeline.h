@@ -8,7 +8,7 @@
 #include <ncnm.h>
 
 namespace xstream{
-\\this will be a core object an xstream object depending on the device
+\\a core class for an xstream object depending on the device & DeviceErrorInfo
 
 template <typename T>
 using Default = core::NCNM<T>;
@@ -20,56 +20,30 @@ enum class PipelineState{
   READY
 };
 
-//policy pattern
-template <typename Device,typename DeviceErrorInfo>
-class Pipeline<Device,DeviceErrorInfo>;
-
 
 template <typename Device,typename DeviceErrorInfo>
 class Pipeline<Device,DeviceErrorInfo>: Default<Pipeline<Device,DeviceErrorInfo>>{
   
 public:
 
-Pipeline():element_{nullptr} noexcept {}
+  Pipeline() noexcept;
 
-std::expected<void,DeviceErrorInfo> create(){
-  Device device{};
-  Gerror * raw_error{nullptr};
-  element_ = device.create_pipeline(pipeline_description, &raw_error);
+  std::expected<void,DeviceErrorInfo> create() noexcept;
 
-  return {};
-}
+  void set_state(PipelineState state) noexcept;
 
+  GstElement * get_pipeline() const noexcept; 
 
-
-
-void set_state(PipelineState state) const noexcept {
+  void set_state(PipelineState state) noexcept; 
   
-  switch (state){
-    case PipelineState::PLAYING:
-      gst_element_set_state(element_.get(),GST_STATE_PLAYING);
-      break;
-    case PipelineState::PAUSED:
-      gst_element_set_state(element_.get(),GST_STATE_PAUSED);
-      break;
-    case PipelineState::STOPPED:
-      gst_element_set_state(element_.get(),GST_STATE_NULL);
-      break;
-    case PipelineState::READY:
-      gst_element_set_state(element_.get(),GST_STATE_READY);
-      break;
-    default:
-      break;
-  }
-}
-
-
-
-GstElement * get_pipeline const noexcept { return element_.get();}
+  GstElement * get_pipeline() const noexcept;
 
 private:
   xvscore::GstPtr<GstElement> element_;
 };
 
 }
+
+#include <pipeline.tpp>
+
 #endif
