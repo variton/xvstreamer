@@ -11,7 +11,7 @@
 #include <expected>
 
 #include <ncnm.h>
-#include <error_info.h>
+#include <err_utils.h>
 #include <gst_memory.h>
 
 namespace xstream {
@@ -39,10 +39,7 @@ enum class VideoError
   InvalidVideoType,
 };
 
-/**
- * @brief Error information type for video stream failures.
- */
-using VideoErrorInfo = err::ErrorInfo<VideoError>;
+ERR_DEFINE_ERROR_INFO(VideoError, VideoErrorInfo);
 
 /**
  * @brief GStreamer-backed stream implementation for video playback.
