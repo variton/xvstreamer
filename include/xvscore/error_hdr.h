@@ -8,7 +8,7 @@
  */
 
 #include <error_info.h>
-#include <corety.h>
+#include <msgtypety.h>
 #include <string>
 
 namespace xvscore{
@@ -26,7 +26,6 @@ auto unexpected(ErrorType error, MsgType* msg) {
     std::string message = msg ? msg->message : "unknown error";
     return err::unexpected<ErrorType>(error, message);
 }
-
 
 }
 
