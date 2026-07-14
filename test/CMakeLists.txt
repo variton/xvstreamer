@@ -76,6 +76,7 @@ add_executable(test_video
 target_include_directories(test_video PUBLIC
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/err>
   $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/core>
+  $<BUILD_INTERFACE:${tcxx-23_SOURCE_DIR}/include/topology>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/xstream>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/utils>
   $<BUILD_INTERFACE:${CMAKE_INCLUDE_PATH}/xvscore>

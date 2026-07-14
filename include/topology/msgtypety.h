@@ -1,9 +1,9 @@
 
-#ifndef CORETY_H
-#define CORETY_H
+#ifndef MSGTYPETY_H
+#define MSGTYPETY_H
 
 /**
- * @file corety.h
+ * @file msgtypety.h
  * @brief Core topology type concepts.
  */
 
