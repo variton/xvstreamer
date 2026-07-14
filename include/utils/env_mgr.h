@@ -4,7 +4,7 @@
 #include <optional>
 #include <string>
 #include <ncnm.h>
-#include <error_info.h>
+#include <err_utils.h>
 
 namespace utils 
 {
@@ -18,7 +18,7 @@ enum class EnvMgrError
   InvalidEnvVarType,
 };
 
-using EnvMgrErrorInfo = err::ErrorInfo<EnvMgrError>;
+ERR_DEFINE_ERROR_INFO(EnvMgrError, EnvMgrErrorInfo);
 
 class EnvMgr : public Default<EnvMgr>
 {
